@@ -6,6 +6,18 @@ interface StudentProps {
 }
 
 export class Student extends Entity<StudentProps> {
+  get name() {
+    return this.name
+  }
+
+  get email() {
+    return this.email
+  }
+
+  get password() {
+    return this.password
+  }
+
   static create(props: StudentProps, id?: UniqueEntityID) {
     const student = new Student(props, id)
 
