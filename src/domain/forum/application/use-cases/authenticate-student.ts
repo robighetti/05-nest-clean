@@ -21,7 +21,7 @@ type AutenticateStudentUseCaseResponse = Either<
 >
 
 @Injectable()
-export class AutenticateStudentUseCase {
+export class AuthenticateStudentUseCase {
   constructor(
     private studentsRepository: StudentsRepository,
     private hashCompare: HashCompare,
@@ -42,6 +42,7 @@ export class AutenticateStudentUseCase {
       password,
       student.password,
     )
+
     if (!isPasswordValid) {
       throw new WrongCredentialsError()
     }
