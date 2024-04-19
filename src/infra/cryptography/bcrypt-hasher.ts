@@ -1,15 +1,16 @@
-import { HashCompare } from '@/domain/forum/application/cryptography/hash-compare'
-import { HashGenerator } from '@/domain/forum/application/cryptography/hash-generator'
-import { compare, hash } from 'bcryptjs'
+import { hash, compare } from 'bcryptjs'
 
-export class BcryptHasher implements HashGenerator, HashCompare {
+import { HashComparer } from '@/domain/forum/application/cryptography/hash-comparer'
+import { HashGenerator } from '@/domain/forum/application/cryptography/hash-generator'
+
+export class BcryptHasher implements HashGenerator, HashComparer {
   private HASH_SALT_LENGTH = 8
 
-  async hash(plain: string): Promise<string> {
+  hash(plain: string): Promise<string> {
     return hash(plain, this.HASH_SALT_LENGTH)
   }
 
-  async compare(plain: string, hashed: string): Promise<boolean> {
-    return compare(plain, hashed)
+  compare(plain: string, hash: string): Promise<boolean> {
+    return compare(plain, hash)
   }
 }

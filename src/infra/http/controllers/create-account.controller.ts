@@ -1,13 +1,12 @@
 import {
-  Body,
-  Controller,
-  Post,
-  HttpCode,
-  UsePipes,
-  ConflictException,
   BadRequestException,
+  Body,
+  ConflictException,
+  Controller,
+  HttpCode,
+  Post,
+  UsePipes,
 } from '@nestjs/common'
-
 import { z } from 'zod'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
@@ -45,7 +44,6 @@ export class CreateAccountController {
       switch (error.constructor) {
         case StudentAlreadyExistsError:
           throw new ConflictException(error.message)
-
         default:
           throw new BadRequestException(error.message)
       }

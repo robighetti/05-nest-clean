@@ -1,5 +1,4 @@
 import { Either, left, right } from '@/core/either'
-
 import { Injectable } from '@nestjs/common'
 import { Student } from '../../enterprise/entities/student'
 import { StudentsRepository } from '../repositories/students-repository'
